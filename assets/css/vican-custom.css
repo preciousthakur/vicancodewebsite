@@ -1,0 +1,322 @@
+/* ==========================================================================
+   Vican Code Custom Styles - Products Showcase, SEO & Legal Pages
+   ========================================================================== */
+
+/* Legal & Verification Badge */
+.vican-corp-banner {
+  background: linear-gradient(135deg, #0d1322 0%, #151d30 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: #a0aec0;
+  font-size: 13px;
+  padding: 8px 0;
+  position: relative;
+  z-index: 99;
+}
+.vican-corp-banner a {
+  color: #63b3ed;
+  text-decoration: underline;
+}
+.vican-corp-banner .badge-cin {
+  background: rgba(99, 179, 237, 0.15);
+  color: #90cdf4;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-weight: 600;
+  margin-left: 6px;
+  border: 1px solid rgba(99, 179, 237, 0.3);
+}
+
+/* Products Section on Homepage */
+.vican-products-section {
+  padding: 100px 0 90px;
+  background: #f7f9fc;
+  position: relative;
+}
+.vican-products-section .section-title {
+  margin-bottom: 50px;
+}
+.vican-product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+}
+@media (max-width: 767px) {
+  .vican-product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.vican-product-card {
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.vican-product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(17, 24, 39, 0.12);
+  border-color: #cbd5e1;
+}
+.vican-product-card__header {
+  padding: 28px 28px 18px;
+  border-bottom: 1px solid #edf2f7;
+  position: relative;
+}
+.vican-product-card__brand {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.vican-product-card__logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.vican-product-card__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+.vican-product-card__name {
+  font-size: 22px;
+  font-weight: 800;
+  color: #1a202c;
+  margin: 0;
+  line-height: 1.2;
+}
+.vican-product-card__tagline {
+  font-size: 13px;
+  color: #718096;
+  font-weight: 500;
+}
+.vican-pill {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.vican-pill--live {
+  background: #def7ec;
+  color: #03543f;
+}
+.vican-pill--live::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #0e9f6e;
+  animation: pulseDot 1.8s infinite;
+}
+@keyframes pulseDot {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(14, 159, 110, 0.7); }
+  70% { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(14, 159, 110, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(14, 159, 110, 0); }
+}
+
+.vican-product-card__body {
+  padding: 24px 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.vican-product-card__desc {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: #4a5568;
+  margin-bottom: 20px;
+}
+.vican-product-card__features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+}
+.vican-product-card__features li {
+  font-size: 13.5px;
+  color: #2d3748;
+  margin-bottom: 9px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.vican-product-card__features li i {
+  color: #10b981;
+  font-size: 14px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+.vican-product-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 15px;
+  border-top: 1px dashed #e2e8f0;
+}
+.vican-product-tag {
+  background: #edf2f7;
+  color: #4a5568;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 6px;
+}
+.vican-product-card__footer {
+  padding: 18px 28px 24px;
+  background: #fafbfc;
+  border-top: 1px solid #edf2f7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.vican-btn-visit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #ffffff;
+  background: #2563eb;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.vican-btn-visit:hover {
+  background: #1d4ed8;
+  color: #fff;
+  transform: translateY(-1px);
+}
+.vican-product-card__domain {
+  font-size: 13px;
+  font-weight: 600;
+  color: #718096;
+}
+
+/* Individual product theme accents */
+.vican-card-dgate .vican-product-card__icon { background: linear-gradient(135deg, #4f46e5, #3730a3); }
+.vican-card-dgate .vican-btn-visit { background: #4f46e5; }
+.vican-card-dgate .vican-btn-visit:hover { background: #3730a3; }
+
+.vican-card-educan .vican-product-card__icon { background: linear-gradient(135deg, #059669, #047857); }
+.vican-card-educan .vican-btn-visit { background: #059669; }
+.vican-card-educan .vican-btn-visit:hover { background: #047857; }
+
+.vican-card-vicantools .vican-product-card__icon { background: linear-gradient(135deg, #0284c7, #10b981); }
+.vican-card-vicantools .vican-btn-visit { background: #0284c7; }
+.vican-card-vicantools .vican-btn-visit:hover { background: #0369a1; }
+
+.vican-card-vicanthemes .vican-product-card__icon { background: linear-gradient(135deg, #18181b, #c6a05a); }
+.vican-card-vicanthemes .vican-btn-visit { background: #18181b; border: 1px solid #c6a05a; color: #f4ebd0; }
+.vican-card-vicanthemes .vican-btn-visit:hover { background: #27272a; color: #fff; }
+
+.vican-card-praceasy .vican-product-card__icon { background: linear-gradient(135deg, #6c3bf4, #e8469b); }
+.vican-card-praceasy .vican-btn-visit { background: #6c3bf4; }
+.vican-card-praceasy .vican-btn-visit:hover { background: #5527db; }
+
+.vican-card-mybank .vican-product-card__icon { background: linear-gradient(135deg, #1e3a8a, #0284c7); }
+.vican-card-mybank .vican-btn-visit { background: #1e3a8a; }
+.vican-card-mybank .vican-btn-visit:hover { background: #172554; }
+
+/* Legal Document Styles */
+.vican-legal-content {
+  padding: 80px 0;
+  background: #ffffff;
+  color: #2d3748;
+}
+.vican-legal-box {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #ffffff;
+}
+.vican-legal-box h1 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: #1a202c;
+}
+.vican-legal-meta {
+  color: #718096;
+  font-size: 14px;
+  margin-bottom: 35px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+.vican-legal-box h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 35px 0 16px;
+}
+.vican-legal-box h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2d3748;
+  margin: 20px 0 10px;
+}
+.vican-legal-box p, .vican-legal-box li {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #4a5568;
+}
+.vican-legal-box ul {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+.vican-legal-callout {
+  background: #f7fafc;
+  border-left: 4px solid #3182ce;
+  padding: 16px 20px;
+  border-radius: 0 8px 8px 0;
+  margin: 25px 0;
+}
+.vican-company-badge-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 25px 0;
+}
+
+/* SEO Breadcrumbs Bar */
+.vican-seo-breadcrumb {
+  background: #f1f5f9;
+  padding: 10px 0;
+  font-size: 13px;
+  border-bottom: 1px solid #e2e8f0;
+}
+.vican-seo-breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 8px;
+  align-items: center;
+}
+.vican-seo-breadcrumb li a {
+  color: #2563eb;
+  text-decoration: none;
+}
+.vican-seo-breadcrumb li.active {
+  color: #64748b;
+}
+
