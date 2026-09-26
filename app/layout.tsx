@@ -27,6 +27,17 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/"
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "32x32" },
+      { url: "/assets/images/favicons/favicon-16x16.png", type: "image/png", sizes: "16x16" }
+    ],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" }
+    ],
+    shortcut: "/favicon.ico"
+  },
   openGraph: {
     title: "Vican Code Private Limited | Enterprise SaaS & Software Engineering",
     description: "Discover our suite of flagship products: DGate, Educan, VicanTools, VicanThemes, PracEasy, and MyBankIFSCCode.",
@@ -44,6 +55,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/icon.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicons/favicon-16x16.png" />
+        <link rel="apple-touch-icon" href="/apple-icon.png" />
+      </head>
       <body>
         <CorporateBanner />
         <Navbar />
