@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ArrowUpRight, Sparkles, Box, Shield, Layers } from "lucide-react";
+import { Menu, X, Sparkles } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,45 +35,19 @@ export default function Navbar() {
         justifyContent: "space-between",
         height: "76px"
       }}>
-        {/* Brand Logo */}
+        {/* Official Vican Code Logo */}
         <Link href="/" style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          <div style={{
-            width: "42px",
-            height: "42px",
-            borderRadius: "12px",
-            background: "linear-gradient(135deg, #6366f1 0%, #06b6d4 100%)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "#ffffff",
-            fontWeight: 800,
-            fontSize: "1.25rem",
-            boxShadow: "0 0 20px rgba(99, 102, 241, 0.4)"
-          }}>
-            V
-          </div>
-          <div>
-            <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <span style={{ fontSize: "1.25rem", fontWeight: 800, letterSpacing: "-0.02em", color: "#ffffff" }}>
-                VICAN CODE
-              </span>
-              <span style={{
-                background: "rgba(99, 102, 241, 0.15)",
-                color: "#818cf8",
-                fontSize: "0.65rem",
-                fontWeight: 700,
-                padding: "2px 6px",
-                borderRadius: "4px",
-                letterSpacing: "0.05em",
-                border: "1px solid rgba(99, 102, 241, 0.3)"
-              }}>
-                PVT LTD
-              </span>
-            </div>
-            <div style={{ fontSize: "0.72rem", color: "#94a3b8", fontWeight: 500 }}>
-              Enterprise SaaS & Engineering
-            </div>
-          </div>
+          <img 
+            src="/assets/images/resources/logo-3.png" 
+            alt="Vican Code Private Limited" 
+            style={{ 
+              height: "44px", 
+              width: "auto", 
+              maxWidth: "200px",
+              objectFit: "contain",
+              display: "block"
+            }} 
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -183,8 +157,6 @@ export default function Navbar() {
           </div>
         </div>
       )}
-
-      
     </header>
   );
 }

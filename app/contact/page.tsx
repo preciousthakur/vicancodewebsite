@@ -10,23 +10,52 @@ import {
   CheckCircle2, 
   ShieldCheck, 
   Sparkles,
-  MessageSquare
+  MessageSquare,
+  MessageCircle,
+  Loader2,
+  RefreshCw
 } from "lucide-react";
 
 export default function ContactPage() {
+  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    subject: "dgate",
+    subject: "DGate Society OS",
     message: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setErrorMsg("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to submit inquiry.");
+      }
+
+      setSubmitted(true);
+    } catch (err: any) {
+      setErrorMsg(err.message || "Something went wrong. Please call or WhatsApp directly.");
+    } finally {
+      setLoading(false);
+    }
   };
+
+  const whatsappUrl = `https://wa.me/918607143370?text=${encodeURIComponent(
+    `Hello Vican Code Team, my name is ${formData.name || "Client"}. I am inquiring about ${formData.subject}. My contact: ${formData.phone || ""}.`
+  )}`;
 
   return (
     <div style={{ paddingTop: "60px", paddingBottom: "100px" }}>
@@ -36,14 +65,14 @@ export default function ContactPage() {
           <div style={{ display: "inline-flex", alignItems: "center", gap: "8px", marginBottom: "16px" }}>
             <span className="badge-pill">
               <MessageSquare size={14} />
-              <span>Direct Communication</span>
+              <span>Direct Communication Desk</span>
             </span>
           </div>
           <h1 style={{ fontSize: "clamp(2.5rem, 5vw, 3.75rem)", fontWeight: 800, color: "#ffffff", letterSpacing: "-0.02em", marginBottom: "18px" }}>
             Get in Touch With Our Team
           </h1>
           <p style={{ fontSize: "1.15rem", color: "#94a3b8", maxWidth: "780px", margin: "0 auto", lineHeight: 1.6 }}>
-            Have a question about deploying <strong style={{ color: "#ffffff" }}>DGate</strong> for your society, implementing <strong style={{ color: "#ffffff" }}>Educan</strong>, or partnering on custom software development? We are here to help.
+            Inquire about implementing <strong style={{ color: "#ffffff" }}>DGate</strong> for your gated community, deploying <strong style={{ color: "#ffffff" }}>Educan</strong>, or partnering on custom software engineering.
           </p>
         </div>
 
@@ -54,27 +83,75 @@ export default function ContactPage() {
               Send an Inquiry
             </h3>
             <p style={{ color: "#94a3b8", fontSize: "0.9rem", marginBottom: "28px" }}>
-              Fill out the details below and our team in Derabassi will respond within 24 business hours.
+              All inquiries are routed to <strong style={{ color: "#38bdf8" }}>vicancodeofficial@gmail.com</strong> and our executive desk in Derabassi.
             </p>
 
             {submitted ? (
               <div style={{
-                background: "rgba(16, 185, 129, 0.1)",
-                border: "1px solid rgba(16, 185, 129, 0.3)",
-                borderRadius: "12px",
-                padding: "32px",
+                background: "linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(6, 182, 212, 0.08) 100%)",
+                border: "1px solid rgba(16, 185, 129, 0.35)",
+                borderRadius: "16px",
+                padding: "36px 28px",
                 textAlign: "center"
               }}>
-                <CheckCircle2 size={48} color="#34d399" style={{ margin: "0 auto 16px auto" }} />
-                <h4 style={{ fontSize: "1.25rem", fontWeight: 700, color: "#ffffff", marginBottom: "8px" }}>
-                  Inquiry Received!
+                <CheckCircle2 size={52} color="#34d399" style={{ margin: "0 auto 16px auto" }} />
+                <h4 style={{ fontSize: "1.35rem", fontWeight: 800, color: "#ffffff", marginBottom: "8px" }}>
+                  Inquiry Received & Dispatched!
                 </h4>
-                <p style={{ color: "#cbd5e1", fontSize: "0.9rem", lineHeight: 1.6 }}>
-                  Thank you for reaching out to <strong>Vican Code Private Limited</strong>. Our product specialist will contact you shortly at {formData.email || "your email"}.
+                <p style={{ color: "#cbd5e1", fontSize: "0.925rem", lineHeight: 1.6, marginBottom: "24px" }}>
+                  Thank you, <strong>{formData.name}</strong>. Your inquiry has been securely recorded in our database and forwarded to our leadership at <span style={{ color: "#38bdf8" }}>vicancodeofficial@gmail.com</span>.
                 </p>
+
+                {/* Instant Connect Buttons */}
+                <div style={{ display: "flex", flexDirection: "column", gap: "12px", maxWidth: "380px", margin: "0 auto 24px auto" }}>
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary"
+                    style={{ background: "#25D366", borderColor: "#22c55e", color: "#ffffff" }}
+                  >
+                    <MessageCircle size={18} />
+                    <span>Instant Chat on WhatsApp</span>
+                  </a>
+
+                  <a
+                    href="tel:+918607143370"
+                    className="btn-secondary"
+                  >
+                    <Phone size={16} color="#34d399" />
+                    <span>Call Helpline: +91 86071 43370</span>
+                  </a>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSubmitted(false);
+                    setFormData({ name: "", email: "", phone: "", subject: "DGate Society OS", message: "" });
+                  }}
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "6px",
+                    color: "#94a3b8",
+                    fontSize: "0.85rem",
+                    padding: "6px 12px",
+                    borderRadius: "6px"
+                  }}
+                >
+                  <RefreshCw size={13} />
+                  <span>Send another inquiry</span>
+                </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+                {errorMsg && (
+                  <div style={{ background: "rgba(244, 63, 94, 0.12)", border: "1px solid rgba(244, 63, 94, 0.3)", padding: "12px 16px", borderRadius: "8px", color: "#f43f5e", fontSize: "0.875rem" }}>
+                    {errorMsg}
+                  </div>
+                )}
+
                 <div>
                   <label style={{ display: "block", fontSize: "0.85rem", fontWeight: 600, color: "#cbd5e1", marginBottom: "6px" }}>
                     Your Full Name *
@@ -164,13 +241,13 @@ export default function ContactPage() {
                       outline: "none"
                     }}
                   >
-                    <option value="dgate">DGate — Smart Society Management & Gate OS</option>
-                    <option value="educan">Educan — Cloud School Management ERP</option>
-                    <option value="praceasy">PracEasy — CA Practice Compliance SaaS</option>
-                    <option value="vicantools">VicanTools — WebAssembly Tools Inquiry</option>
-                    <option value="vicanthemes">VicanThemes — Developer Templates & Licensing</option>
-                    <option value="custom">Custom Web / Mobile Application Development</option>
-                    <option value="corporate">Corporate Governance / General Inquiry</option>
+                    <option value="DGate Society OS">DGate — Smart Society Management & Gate OS</option>
+                    <option value="Educan School ERP">Educan — Cloud School Management ERP</option>
+                    <option value="PracEasy CA SaaS">PracEasy — CA Practice Compliance SaaS</option>
+                    <option value="VicanTools WebAssembly">VicanTools — WebAssembly Tools Inquiry</option>
+                    <option value="VicanThemes Marketplace">VicanThemes — Developer Templates & Licensing</option>
+                    <option value="Custom Engineering">Custom Web / Mobile Application Development</option>
+                    <option value="Corporate Governance">Corporate Governance / General Inquiry</option>
                   </select>
                 </div>
 
@@ -198,9 +275,23 @@ export default function ContactPage() {
                   />
                 </div>
 
-                <button type="submit" className="btn-primary" style={{ width: "100%", justifyContent: "center" }}>
-                  <Send size={16} />
-                  <span>Submit Inquiry to Vican Code</span>
+                <button 
+                  type="submit" 
+                  disabled={loading}
+                  className="btn-primary" 
+                  style={{ width: "100%", justifyContent: "center", opacity: loading ? 0.7 : 1 }}
+                >
+                  {loading ? (
+                    <>
+                      <Loader2 size={16} className="animate-spin" />
+                      <span>Transmitting Inquiry...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send size={16} />
+                      <span>Submit Inquiry to Vican Code</span>
+                    </>
+                  )}
                 </button>
               </form>
             )}
@@ -266,8 +357,6 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
-
-      
     </div>
   );
 }

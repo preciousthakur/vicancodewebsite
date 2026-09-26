@@ -9,10 +9,7 @@ import {
   Mail, 
   ShieldCheck, 
   ExternalLink, 
-  Heart,
-  FileText,
-  Lock,
-  Globe
+  Lock
 } from "lucide-react";
 
 export default function Footer() {
@@ -46,30 +43,19 @@ export default function Footer() {
         }} className="footer-grid">
           {/* Column 1: Corporate Entity */}
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
-              <div style={{
-                width: "40px",
-                height: "40px",
-                borderRadius: "10px",
-                background: "linear-gradient(135deg, #6366f1 0%, #06b6d4 100%)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "#ffffff",
-                fontWeight: 800,
-                fontSize: "1.2rem"
-              }}>
-                V
-              </div>
-              <div>
-                <span style={{ fontSize: "1.2rem", fontWeight: 800, color: "#ffffff", display: "block" }}>
-                  VICAN CODE
-                </span>
-                <span style={{ fontSize: "0.75rem", color: "#818cf8", fontWeight: 600 }}>
-                  PRIVATE LIMITED
-                </span>
-              </div>
-            </div>
+            <Link href="/" style={{ display: "inline-block", marginBottom: "18px" }}>
+              <img 
+                src="/assets/images/resources/logo-3.png" 
+                alt="Vican Code Private Limited" 
+                style={{ 
+                  height: "48px", 
+                  width: "auto", 
+                  maxWidth: "220px",
+                  objectFit: "contain",
+                  display: "block"
+                }} 
+              />
+            </Link>
 
             <p style={{ fontSize: "0.875rem", color: "#94a3b8", lineHeight: 1.6, marginBottom: "20px" }}>
               A pioneering Indian software engineering company building mission-critical SaaS platforms, cloud ERPs, and client-side web utility architectures.
@@ -260,8 +246,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-
-      
     </footer>
   );
 }
